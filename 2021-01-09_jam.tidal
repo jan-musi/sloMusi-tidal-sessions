@@ -1,0 +1,115 @@
+d2
+$ note "0 -12 . 1 -12 3 2"
+|+ note "0*4"
+# s "pluck"
+# gain 0
+# room "4"
+
+d2 silence
+
+
+d4
+$ s "bd hh sd hh"
+# gain "0.0"
+
+d4
+$ s "bd"
+
+d4 silence
+
+
+d6
+$ note "[1*1 . 2*2 . 3*3 . 4*4 . 5*5 . 6*6 . 7*7 . 8*8 . 9*9]/2.3"
+# s "yeh"
+# gain 0
+
+
+d8
+$ s "<crow*4 ~!7>"
+# shape 0.2
+# vowel "e a"
+# gain 0
+
+
+d10
+$ slow 5 (striate 64 (fast 3 (sound "fire")))
+# cut 1
+# gain 0
+
+
+d12
+$ slow 5 (sound "dork2")
+# gain 0
+
+
+d14
+$ n "<8 2 20>"
+|+ n (irand 2 * (fast 2 (irand 2)) * (fast 3 (irand 26)))
+# sound "alphabet"
+# note "a5"
+# gain 0
+
+
+d16
+$ n "[24]/3"
+# sound "alphabet"
+# note "a4"
+# gain 0
+
+
+p "pads"
+$ note "[[d3 a3 a4] ~ ~ ~ c3 ~ ~ ~]/4"
+# sound "<juno:9 juno:8>"
+# begin 0.3
+# end 0.5
+# cut 2
+# cutoff (irand 2000)
+# resonance 0.6
+# gain 0
+
+
+p "bass"
+$ note "<[[0 2 3 5 7 ~ ~ ~] 7 3 5]/4 [3 5]>/4"
+|+ note "a2"
+# sound "supersquare"
+# gain 0
+
+
+
+
+
+
+
+
+
+
+d9
+$ chop "<16 ~ ~ 32>"
+$ sound "crow"
+# gain "0.4"
+# lpf "500"
+# gain 0
+
+
+d5
+$ slow 4
+$ n "{0 7 1 7}"
+# s "superhex"
+# sustain "1"
+# decay "4"
+# hpf "900" # room "0.8"
+# gain "0.3"
+
+d5 silence
+d7 silence
+
+d7 $ chop (slow 8 $ randcat [1, 2, 4])
+      $ striate (randcat [1, 2, 4])
+      $ slow 2
+      $ (sometimesBy (1/4) (# vowel (randcat ["a", "e", "i", "o", "u" ])))
+      $ (|*| speed (2 ** (segment 1 $ irand 4 - 3)))
+      $ (|*| speed (fast 2 $ randcat [1, 9/8, 4/3, 3/2, 27/16] ) )
+      $ s (randcat ["trump"]) #  cut 1
+      # n (segment (randcat [1,2,4,8]) $ irand 12)
+      # delay 1 # delayfb 0.95 # delayt (randcat [1, 2, 4] / 3)
+      # room 1 # size 0.95   |*| gain 0.1   # pan rand
